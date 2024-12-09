@@ -20,7 +20,7 @@ GPT2 models are from Hugging Face libraries
 1. Image Captioning by training the model *without* pre-trained weights [Goal results]
 2. Image Captioning by *not* training the model with pre-trained weights
 3. Image Captioning by training the model *with* pre-trained weights
-- Use various resnets, GPT models, and datasets for testing as well
+- Use various resnets, GPT models, and datasets for testing <ins> listed in main.py </ins>
 
 ### To do:
 - [ ] Put results in a folder instead of directly displaying after training
