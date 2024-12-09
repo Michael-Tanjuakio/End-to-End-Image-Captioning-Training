@@ -71,11 +71,11 @@ def getDataSet(batch_size, dataset):
         annotations_file = flickr8k_path + r"\captions.txt"
 
     # Create and split dataset 
-    dataset1 = Flickr8kDataset(annotations_file=annotations_file, img_dir=img_dir, tokenizer=tokenizer, transform=transform)
+    dataset = Flickr8kDataset(annotations_file=annotations_file, img_dir=img_dir, tokenizer=tokenizer, transform=transform)
 
-    split_point = int(0.9*len(dataset1))
+    split_point = int(0.9*len(dataset))
 
-    train_dataset, val_dataset = torch.utils.data.random_split(dataset1, [split_point, len(dataset1) - split_point])
+    train_dataset, val_dataset = torch.utils.data.random_split(dataset, [split_point, len(dataset) - split_point])
 
     # Create data loaders
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, collate_fn=collate_fn, shuffle=True)

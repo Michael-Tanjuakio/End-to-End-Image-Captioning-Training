@@ -9,9 +9,12 @@ def main():
     '''
 
     '''
-    Resnet Versions: resnet18, resnet34, resnet50, resnet101, resnet152
-    GPT Versions: GPT2LMHeadModel (PyTorch subclass), TFGPT2LMHeadModel (keras subclass), FlaxGPT2LMHeadModel (flax subclass)
-    *** Case sensitive ***
+    Valid train arguments - *** Case sensitive ***
+
+    Resnet Versions:    resnet18, resnet34, resnet50, resnet101, resnet152
+    GPT Versions:       GPT2LMHeadModel (PyTorch subclass), TFGPT2LMHeadModel (keras subclass), FlaxGPT2LMHeadModel (flax subclass)
+    pretrained:         True, False
+    dataset:            dataset1 (Flickr8kDataset)
     '''
 
     # Example training
