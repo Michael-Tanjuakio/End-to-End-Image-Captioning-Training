@@ -12,7 +12,7 @@ GPT2 models are from Hugging Face libraries
 - Pretrained GPT2 weights comes from training very large corpus of ~40 GB of text data  
 
 ## Running the program
-1. **Run data_load.py** to locally download datasets for training 
+1. **Run data_install.py** to locally download datasets for training 
 2. **Edit main.py** for desired ResNet version, GPT2 version, dataset, pretrained mode
 3. **Run main.py** to test the results
 
