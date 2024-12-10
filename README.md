@@ -38,4 +38,4 @@ HuggingFace OpenAI Models
 - https://huggingface.co/docs/transformers/en/model_doc/gpt2  
 
 ## Owners of Repository
-Michael Tanjuakio, Sowresh, Artan, Anthony
+Michael Tanjuakio, Sowresh Mecheri-Senthil, Artan Vafaei, Anthony Nguyen
