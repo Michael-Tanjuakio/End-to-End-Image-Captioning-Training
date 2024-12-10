@@ -82,3 +82,7 @@ def getDataSet(batch_size, dataset):
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, collate_fn=collate_fn, shuffle=False)
 
     return train_dataloader, val_dataloader
+
+def getDataSetName(dataset):
+    if dataset == "dataset1":
+        return "Flickr8K"

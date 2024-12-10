@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import numpy as np
 
 from config import parameters
 from data_load import getDataSet
@@ -28,6 +29,10 @@ def train(resnet_model, gpt2lmhead_model, pretrained, dataset):
     ''' Create Model with optimizer '''
     model = ImageCaptioningModel(resnet, gpt2).to(device)
     optimizer = AdamW(model.parameters(), lr=learning_rate)
+
+    ''' Create loss list and BertScore list '''
+    training_losses = np.zeros((num_epochs), dtype=np.float32)
+    validation_losses = np.zeros((num_epochs), dtype=np.float32)
 
     ''' Train the model '''
     for epoch in range(num_epochs):
@@ -72,6 +77,10 @@ def train(resnet_model, gpt2lmhead_model, pretrained, dataset):
 
         print(f"Epoch {epoch + 1}/{num_epochs} | Training Loss: {total_loss / len(train_dataloader):.3f} | "
             f"Validation Loss: {val_loss:.3f}\n")
+        
+        # Save both the training loss mean and validation loss mean
+        training_losses[epoch] = total_loss / len(train_dataloader)
+        validation_losses[epoch] = val_loss
     
     ''' Return model and data for generating results'''
-    return model, val_dataloader
+    return model, val_dataloader, training_losses, validation_losses
