@@ -22,7 +22,7 @@ def main():
     ''' Example training '''
 
     # Set model versions, pretrain condition, and dataset
-    resnet_model = "resnet50"
+    resnet_model = "resnet34"
     gpt2lmhead_model = "GPT2LMHeadModel"
     pretrained = True
     pretrained_str = "Pretrained" if pretrained else "Trained"
@@ -35,7 +35,7 @@ def main():
     print(f"Testing: {info}") # Passes test
 
     # Train the model with the dataset
-    model, test_dataloader, training_loss_data, validation_loss_data = train(
+    model, test_dataloader, training_loss_data, validation_loss_data, precision_bc, recall_bc, f1_bc = train(
         resnet_model=resnet_model, 
         gpt2lmhead_model=gpt2lmhead_model, 
         pretrained=pretrained, 
@@ -48,6 +48,9 @@ def main():
         val_dataloader=test_dataloader, 
         training_loss_data=training_loss_data, 
         validation_loss_data=validation_loss_data, 
+        precision_bc=precision_bc,
+        recall_bc=recall_bc,
+        f1_bc=f1_bc,
         info=info, 
         filepath=filepath
     ) 

@@ -1,12 +1,18 @@
 import torch.nn as nn
 
 class ImageCaptioningModel(nn.Module):
-    def __init__(self, resnet, gpt2):
+    def __init__(self, resnet, resnet_model, gpt2):
         super(ImageCaptioningModel, self).__init__()
         self.resnet = resnet
         self.gpt2 = gpt2
 
-        self.proj = nn.Linear(2048, gpt2.config.hidden_size)
+        out_feature = 0
+        if resnet_model in ["resnet50", "resnet101", "resnet152"]:
+            out_feature = 2048
+        else:
+            out_feature = 512 # resnet18, resnet34
+        
+        self.proj = nn.Linear(out_feature, gpt2.config.hidden_size)
 
     def forward(self, images, input_ids, attention_mask=None):
         img_features = self.resnet(images)
