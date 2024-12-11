@@ -15,10 +15,10 @@ GPT2 models are from Hugging Face libraries
 3. **Run main.py** to test the results
 
 ### Testing Categories
-1. Image Captioning by training the model *without* pre-trained weights [Goal results]
-2. Image Captioning by *not* training the model with pre-trained weights
-3. Image Captioning by training the model *with* pre-trained weights
+1. Image Captioning by training the model *without* pre-trained weights [Goal results]  
+2. Image Captioning by training the model *with* pre-trained weights
 - Use various resnets and GPT models for testing <ins> listed in main.py </ins>
+
 
 ### To do:
 - [x] Put results in a folder instead of directly displaying after training
