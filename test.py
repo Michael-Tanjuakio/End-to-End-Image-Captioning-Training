@@ -128,7 +128,8 @@ def show_results(model, val_dataloader, training_loss_data, validation_loss_data
     ''' Generate 5 Image Captions per result'''
     image_captions_path = f"{results_folder_path}/ImageCaptions"
     os.mkdir(image_captions_path) # Make image directory
-    for i in range(1, 6):
+    img_cap_results = 30 # Change how many image caption results
+    for i in range(1, img_cap_results + 1):
 
         # Retrieve Random Image
         random_idx = random.randint(0, len(val_dataloader) - 1)

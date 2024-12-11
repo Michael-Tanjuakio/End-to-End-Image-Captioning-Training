@@ -254,6 +254,78 @@ def test6():
         filepath=filepath
     ) 
 
+''' Resnet50, GPTLMHead, Training, No Pretrained Weights - learning rate of 8e-5 '''
+def test7():
+    # Set model versions, pretrain condition, and dataset
+    resnet_model = "resnet50"
+    gpt2lmhead_model = "GPT2LMHeadModel"
+    pretrained = False
+    pretrained_str = "Pretrained" if pretrained else "Trained"
+    dataset = "dataset1"
+    filepath = "Test_7_Resnet50_GPTLMHead_Training_No_Pretrained Weights_lr_8e-5"
+    info = f"{resnet_model}, {gpt2lmhead_model}, {getDataSetName(dataset)}, {pretrained_str}" # Set results name
+
+    # Test if results folder already exists else end the program
+    directory_exists(f"Results/{filepath}")
+    print(f"Testing: {info}") # Passes test
+
+    # Train the model with the dataset
+    model, test_dataloader, training_loss_data, validation_loss_data, precision_bc, recall_bc, f1_bc = train(
+        resnet_model=resnet_model, 
+        gpt2lmhead_model=gpt2lmhead_model, 
+        pretrained=pretrained, 
+        dataset=dataset
+    )
+    
+    # Saves loss graph, 5 image captions
+    show_results(
+        model=model, 
+        val_dataloader=test_dataloader, 
+        training_loss_data=training_loss_data, 
+        validation_loss_data=validation_loss_data, 
+        precision_bc=precision_bc,
+        recall_bc=recall_bc,
+        f1_bc=f1_bc,
+        info=info, 
+        filepath=filepath
+    ) 
+
+''' Resnet34, GPTLMHead, Training, No Pretrained Weights - learning rate of 5e-5, 25 epochs '''
+def test8():
+    # Set model versions, pretrain condition, and dataset
+    resnet_model = "resnet34"
+    gpt2lmhead_model = "GPT2LMHeadModel"
+    pretrained = False
+    pretrained_str = "Pretrained" if pretrained else "Trained"
+    dataset = "dataset1"
+    filepath = "Test_8_Resnet34_GPTLMHead_Training_No_Pretrained Weights_25_epochs"
+    info = f"{resnet_model}, {gpt2lmhead_model}, {getDataSetName(dataset)}, {pretrained_str}" # Set results name
+
+    # Test if results folder already exists else end the program
+    directory_exists(f"Results/{filepath}")
+    print(f"Testing: {info}") # Passes test
+
+    # Train the model with the dataset
+    model, test_dataloader, training_loss_data, validation_loss_data, precision_bc, recall_bc, f1_bc = train(
+        resnet_model=resnet_model, 
+        gpt2lmhead_model=gpt2lmhead_model, 
+        pretrained=pretrained, 
+        dataset=dataset
+    )
+    
+    # Saves loss graph, 5 image captions
+    show_results(
+        model=model, 
+        val_dataloader=test_dataloader, 
+        training_loss_data=training_loss_data, 
+        validation_loss_data=validation_loss_data, 
+        precision_bc=precision_bc,
+        recall_bc=recall_bc,
+        f1_bc=f1_bc,
+        info=info, 
+        filepath=filepath
+    ) 
+
 def main():
 
     ''' 
@@ -276,22 +348,25 @@ def main():
     ''' Research Paper Results '''
 
     ''' Test 1: Resnet50, GPTLMHead, Training, Pretrained Weights '''
-    test1()
+    # test1()
 
     ''' Test 2: Resnet50, GPTLMHead, ** No Training **, Pretrained Weights '''
-    test2()
+    # test2()
 
     ''' Test 3: Resnet50, GPTLMHead, Training, No Pretrained Weights '''
-    test3()
+    # test3()
 
     ''' Test 4: Resnet34, GPTLMHead, Training, Pretrained Weights '''
-    test4()
+    # test4()
 
     ''' Test 5: Resnet34, GPTLMHead, ** No Training **, Pretrained Weights '''
-    test5()
+    # test5()
 
     ''' Test 6: Resnet34, GPTLMHead, Training, No Pretrained Weights '''
-    test6()
+    # test6()
+
+    # test7()
+    test8()
 
 if __name__=="__main__":
     main()
